@@ -11,6 +11,8 @@ Features
 
 Examples
 ========
+
+```
 import getui
 
 client_id = 'xxx'
@@ -19,3 +21,4 @@ push_notification('link title', 'link message',
                   link='http://www.baidu.com')
 push_notification('notify title', 'notify message', 
                   getui.PUSH_TYPE_NOTIFY, [client_id])
+```
