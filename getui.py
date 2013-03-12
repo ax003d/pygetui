@@ -76,6 +76,6 @@ if __name__=='__main__':
     test_client = 'xxx'
     push_notification('link title', 'link message', 
                       PUSH_TYPE_LINK, [test_client],
-                      link='http://sichu.sinaapp.com')
+                      link='http://www.baidu.com')
     push_notification('notify title', 'notify message', 
                       PUSH_TYPE_NOTIFY, [test_client])
