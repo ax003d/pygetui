@@ -15,11 +15,12 @@ Usage:
    The console will show JSON response from getui.
 '''
 
-import md5
-import simplejson
+import json
 import types
 import urllib
 import urllib2
+
+from hashlib import md5
 
 APPID = ''
 APPKEY = ''
@@ -33,6 +34,8 @@ PUSH_TYPE_NOTIFY       = 'NotifyMsg'
 
 def push_notification(title, message, push_type, subscribers,
                       link=None):
+    title = title.encode('utf-8')
+    message = message.encode('utf-8')
     params = {}
     params['appkey'] = APPKEY
     params['pushTitle'] = title
@@ -66,7 +69,7 @@ def push_notification(title, message, push_type, subscribers,
             sign.append(str(params[i]))
     params['sign'] = md5.md5(''.join(sign)).hexdigest()
 
-    data = simplejson.dumps(params)
+    data = json.dumps(params)
     req = urllib2.Request(APIURL, data)
     response = urllib2.urlopen(req)
     print response.read()
