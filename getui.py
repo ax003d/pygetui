@@ -33,7 +33,7 @@ class GXPushClient(object):
         self.mastersecret = mastersecret
 
 
-    def push_notification(title, message, push_type, subscribers,
+    def push_notification(self, title, message, push_type, subscribers,
                           link=None):
         title = title.encode('utf-8')
         message = message.encode('utf-8')
@@ -68,10 +68,10 @@ class GXPushClient(object):
             if type(params[i]) in [types.StringType, types.IntType, types.LongType]:
                 sign.append(i)
                 sign.append(str(params[i]))
-        params['sign'] = md5.md5(''.join(sign)).hexdigest()
+        params['sign'] = md5(''.join(sign)).hexdigest()
 
         data = json.dumps(params)
-        req = urllib2.Request(APIURL, data)
+        req = urllib2.Request(GXPushClient.APIURL, data)
         response = urllib2.urlopen(req)
         print response.read()
     
