@@ -13,12 +13,16 @@ Examples
 ========
 
 ```
-import getui
-
-client_id = 'xxx'
-push_notification('link title', 'link message', 
-                  getui.PUSH_TYPE_LINK, [client_id],
-                  link='http://www.baidu.com')
-push_notification('notify title', 'notify message', 
-                  getui.PUSH_TYPE_NOTIFY, [client_id])
+from pygetui import *
+    
+gx = GXPushClient(appid='your appid',
+                  appkey='your appkey',
+                  mastersecret='your mastersecret')
+test_client = 'xxx'
+gx.push_notification('link title', 'link message',
+                      PUSH_TYPE_LINK, [test_client],
+                      link='http://www.baidu.com')
+gx.push_notification('notify title', 'notify message',
+                      PUSH_TYPE_NOTIFY, [test_client])
+                         
 ```
